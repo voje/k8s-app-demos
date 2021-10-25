@@ -19,11 +19,20 @@ spec:
       labels:
         app: frontend
     spec:
+
+      # We only need these when pulling from a private registry
       imagePullSecrets:
       - name: vmgitent
+
       containers:
-      - image: vmgitent.iskratel.si:4567/voje/docker-registry/frontend:0.0.1
-        name: frontend
+      - name: frontend
+
+        # image from Private registry
+        # image: vmgitent.iskratel.si:4567/voje/docker-registry/frontend:0.0.1
+
+        # image from DockerHub
+        image: voje/frontend:0.1.0
+
         env:
         - name: POD_ID
           valueFrom:

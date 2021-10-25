@@ -1,4 +1,4 @@
-IMG=voje/k8s-docker-images/frontend:0.0.1
+IMG=voje/frontend:0.1.0
 CNT=frontend
 
 build:
@@ -12,3 +12,6 @@ run:
 		-p 8080:80 \
 		-e POD_ID="We're in docker right now" \
 		${IMG}
+
+push: build
+	docker push ${IMG}
